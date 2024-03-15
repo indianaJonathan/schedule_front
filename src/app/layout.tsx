@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/common/navbar";
+import { Footer } from "@/components/common/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +16,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navbarItems = [
+    {
+      id: "1",
+      route: "/",
+      caption: "Início",
+    }
+  ]
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-BR">
+      <body className={`${inter.className} antialiased bg-scheduler-500 text-scheduler-50 flex flex-col min-h-screen`}>
+        <Navbar items={navbarItems}/>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
